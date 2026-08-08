@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КЛИНИКА ПК — скорая компьютерная помощь в Тюмени</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4FAF8;
+  --bg-soft:#EAF6F1;
+  --surface:#FFFFFF;
+  --surface-2:#F1F8F5;
+  --border:#DCEFE7;
+  --border-soft:#E7F3EE;
+  --text:#152621;
+  --text-dim:#5C7570;
+  --text-dimmer:#8AA29C;
+  --teal:#0FA98F;
+  --teal-dark:#0B8873;
+  --teal-soft:#0fa98f1a;
+  --coral:#FF6B4D;
+  --coral-dark:#F0532F;
+  --coral-soft:#ff6b4d1a;
+  --blue:#3D8BFF;
+  --blue-soft:#3d8bff1a;
+  --yellow:#FFB648;
+  --yellow-soft:#ffb6481f;
+  --purple:#9B6BFF;
+  --purple-soft:#9b6bff1a;
+  --radius-lg:28px;
+  --radius-md:20px;
+  --radius-sm:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+::selection{background:var(--coral);color:#fff;}
+:focus-visible{outline:2px solid var(--teal-dark);outline-offset:3px;border-radius:4px;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.85rem;font-weight:600;
+  color:var(--teal-dark);
+  background:var(--teal-soft);
+  border:1px solid #0fa98f33;
+  padding:7px 16px;border-radius:100px;
+  margin-bottom:20px;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+
+h1,h2,h3{font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-0.01em;}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,250,248,0.85);
+  backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--border-soft);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;}
+.logo-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal),#3fd6b4);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;flex-shrink:0;
+  box-shadow:0 6px 14px -6px #0fa98f66;
+}
+.logo small{display:block;font-weight:500;font-size:0.72rem;color:var(--text-dim);}
+.nav-links{display:flex;gap:28px;font-size:0.95rem;color:var(--text-dim);font-weight:500;}
+.nav-links a{text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:var(--teal-dark);}
+.nav-cta{display:flex;align-items:center;gap:18px;}
+.nav-phone{font-size:0.95rem;font-weight:600;color:var(--text);text-decoration:none;white-space:nowrap;}
+@media(max-width:840px){.nav-links{display:none;}.nav-phone{display:none;}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 30px;border-radius:100px;
+  font-weight:700;font-size:0.98rem;text-decoration:none;
+  border:none;cursor:pointer;transition:transform .15s, box-shadow .15s, background .15s;
+  font-family:'Inter',sans-serif;
+}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 26px -10px #ff6b4dab;}
+.btn-primary:hover{background:var(--coral-dark);transform:translateY(-1px);box-shadow:0 14px 30px -10px #ff6b4dcc;}
+.btn-ghost{background:#fff;color:var(--text);border:1.5px solid var(--border);}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark);}
+.btn-sm{padding:11px 22px;font-size:0.9rem;}
+
+/* ============ HERO ============ */
+.hero{padding:60px 0 30px;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px;}}
+.hero h1{font-size:clamp(2.1rem,4.2vw,3.3rem);line-height:1.12;color:#0E2019;}
+.hero h1 em{font-style:normal;color:var(--coral);position:relative;}
+.hero p.lead{margin-top:18px;font-size:1.14rem;color:var(--text-dim);max-width:480px;}
+.hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+.trust-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
+.trust-pill{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--border);
+  padding:10px 16px;border-radius:100px;font-size:0.88rem;font-weight:600;color:var(--text);
+  box-shadow:0 4px 14px -8px #15262122;
+}
+.trust-pill span.n{color:var(--teal-dark);}
+
+/* --- friendly chat mockup --- */
+.chat-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:0 30px 60px -28px #15262133;
+  max-width:420px;
+  margin-left:auto;
+}
+.chat-head{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;
+  background:linear-gradient(135deg,var(--teal),#22c3a3);
+  color:#fff;
+}
+.chat-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:#ffffff30;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;flex-shrink:0;
+}
+.chat-head .name{font-weight:700;font-size:0.98rem;}
+.chat-head .status{font-size:0.78rem;opacity:0.9;display:flex;align-items:center;gap:5px;}
+.chat-head .status .dot{width:6px;height:6px;border-radius:50%;background:#7CFFCB;}
+.chat-body{padding:20px 16px 10px;display:flex;flex-direction:column;gap:10px;background:var(--surface-2);}
+.bubble{
+  max-width:78%;padding:11px 15px;border-radius:18px;font-size:0.92rem;line-height:1.4;
+  opacity:0;animation:pop .45s ease forwards;
+}
+.bubble.in{
+  align-self:flex-start;background:#fff;color:var(--text);
+  border:1px solid var(--border);border-bottom-left-radius:5px;
+}
+.bubble.out{
+  align-self:flex-end;background:var(--teal);color:#fff;
+  border-bottom-right-radius:5px;
+}
+.bubble .tick{display:block;font-size:0.68rem;margin-top:4px;opacity:0.75;text-align:right;}
+@keyframes pop{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@media(prefers-reduced-motion:reduce){.bubble{opacity:1;animation:none;}}
+.chat-input{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 16px;background:#fff;border-top:1px solid var(--border);
+}
+.chat-input .field{
+  flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:100px;
+  padding:10px 16px;font-size:0.85rem;color:var(--text-dimmer);
+}
+.chat-input .send{
+  width:36px;height:36px;border-radius:50%;background:var(--coral);
+  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+}
+.chat-float{
+  position:absolute;background:#fff;border:1px solid var(--border);border-radius:16px;
+  padding:10px 14px;font-size:0.8rem;font-weight:600;box-shadow:0 12px 26px -12px #15262140;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-visual{position:relative;}
+
+/* ============ SECTION SHELL ============ */
+.section{padding:64px 0;}
+.section-head{max-width:640px;margin-bottom:38px;}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);color:#0E2019;}
+.section-head p{margin-top:12px;color:var(--text-dim);font-size:1.05rem;}
+
+/* ============ SYMPTOMS / SERVICES ============ */
+.symptom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:880px){.symptom-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.symptom-grid{grid-template-columns:1fr;}}
+.symptom-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:24px 22px;transition:border-color .2s, transform .2s, box-shadow .2s;
+}
+.symptom-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px -18px #15262140;border-color:transparent;}
+.symptom-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.symptom-icon.teal{background:var(--teal-soft);color:var(--teal-dark);}
+.symptom-icon.coral{background:var(--coral-soft);color:var(--coral-dark);}
+.symptom-icon.blue{background:var(--blue-soft);color:var(--blue);}
+.symptom-icon.yellow{background:var(--yellow-soft);color:#C17F00;}
+.symptom-icon.purple{background:var(--purple-soft);color:var(--purple);}
+.symptom-card h3{font-size:1.1rem;color:#0E2019;margin-bottom:8px;}
+.symptom-list{list-style:none;font-size:0.9rem;color:var(--text-dim);}
+.symptom-list li{padding:3px 0;padding-left:18px;position:relative;}
+.symptom-list li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700;}
+
+/* ============ PROCESS ============ */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:880px){.process{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.process{grid-template-columns:1fr;}}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:26px 22px;}
+.step-num{
+  width:34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem;
+  margin-bottom:16px;
+}
+.step h3{font-size:1.06rem;color:#0E2019;margin-bottom:8px;}
+.step p{font-size:0.9rem;color:var(--text-dim);}
+
+/* ============ PRICING ============ */
+.price-panel{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:0 20px 40px -30px #15262140;
+}
+.price-panel-head{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:22px 28px;background:linear-gradient(135deg,var(--teal),#22c3a3);color:#fff;
+}
+.price-panel-head h3{color:#fff;font-size:1.18rem;}
+.price-free{font-weight:700;font-size:0.92rem;background:#ffffff26;padding:6px 14px;border-radius:100px;}
+.price-cols{display:grid;grid-template-columns:1fr 1fr;padding:10px 8px;}
+@media(max-width:720px){.price-cols{grid-template-columns:1fr;}}
+.price-col{padding:16px 24px;}
+.price-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--border-soft);font-size:0.97rem;
+}
+.price-col .price-row:last-child{border-bottom:none;}
+.price-row .label{color:var(--text);font-weight:500;}
+.price-row .label small{display:block;color:var(--text-dimmer);font-size:0.78rem;font-weight:400;margin-top:2px;}
+.price-row .cost{font-family:'Sora',sans-serif;font-weight:700;color:var(--coral-dark);white-space:nowrap;}
+.price-note{padding:18px 28px 24px;font-size:0.85rem;color:var(--text-dimmer);}
+
+/* ============ STATS BAR ============ */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:720px){.stats-bar{grid-template-columns:repeat(2,1fr);}}
+.stat{
+  padding:28px 22px;border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--border);
+  text-align:center;
+}
+.stat b{display:block;font-family:'Sora',sans-serif;font-size:2.1rem;color:var(--teal-dark);}
+.stat span{font-size:0.86rem;color:var(--text-dim);}
+
+/* ============ REVIEWS (case cards) ============ */
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:780px){.case-grid{grid-template-columns:1fr;}}
+.case-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:24px 24px 22px;position:relative;overflow:hidden;
+}
+.case-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--accent-bar,var(--teal));}
+.case-top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.case-avatar{
+  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;flex-shrink:0;
+}
+.case-name{font-family:'Sora',sans-serif;font-weight:700;color:#0E2019;}
+.case-device{font-size:0.78rem;color:var(--text-dimmer);}
+.case-row{display:flex;gap:10px;font-size:0.92rem;padding:7px 0;}
+.case-row .k{flex-shrink:0;width:82px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.03em;color:var(--text-dimmer);font-weight:600;padding-top:2px;}
+.case-row .v{color:var(--text-dim);}
+.case-row.result .v{color:var(--text);font-weight:500;}
+
+/* ============ ORDER FORM ============ */
+.order-wrap{
+  background:linear-gradient(135deg,var(--teal),#22c3a3);
+  border-radius:var(--radius-lg);
+  padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  color:#fff;
+}
+@media(max-width:880px){.order-wrap{grid-template-columns:1fr;padding:32px 24px;}}
+.order-left .eyebrow{background:#ffffff26;border-color:#ffffff40;color:#fff;}
+.order-left .eyebrow .dot{background:#fff;}
+.order-left h2{font-size:1.9rem;color:#fff;margin-bottom:14px;}
+.order-left p{color:#ffffffcc;margin-bottom:22px;}
+.order-perks{list-style:none;}
+.order-perks li{display:flex;gap:10px;align-items:center;padding:6px 0;font-size:0.95rem;color:#fff;}
+.order-perks li svg{flex-shrink:0;}
+.form-box{background:#fff;border-radius:var(--radius-md);padding:26px;}
+.form-box input,.form-box textarea{
+  width:100%;padding:14px 16px;margin-bottom:12px;
+  background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--text);font-family:'Inter',sans-serif;font-size:0.96rem;
+}
+.form-box input::placeholder,.form-box textarea::placeholder{color:var(--text-dimmer);}
+.form-box input:focus,.form-box textarea:focus{outline:none;border-color:var(--teal);}
+.form-box button{width:100%;margin-top:4px;}
+#status2{margin-top:12px;font-size:0.88rem;color:var(--text-dim);min-height:1.2em;font-weight:600;}
+
+/* ============ FOOTER ============ */
+footer{padding:36px 0 44px;border-top:1px solid var(--border-soft);margin-top:20px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--text-dimmer);font-size:0.88rem;}
+.footer-inner a{color:var(--text-dim);text-decoration:none;font-weight:600;}
+.footer-inner a:hover{color:var(--teal-dark);}
+
+/* ============ ADMIN MODE ============ */
+body.editing .ed{
+  outline:1.5px dashed #3D8BFFaa;outline-offset:3px;border-radius:4px;
+  cursor:text;
+}
+body.editing .ed:hover{outline-color:var(--coral);background:#ff6b4d0d;}
+body.editing .ed:focus{outline:2px solid var(--coral);background:#ff6b4d14;}
+
+.admin-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:999;
+  background:#152621;color:#fff;
+  font-family:'Inter',sans-serif;
+  box-shadow:0 -10px 30px -14px #00000066;
+  display:none;
+}
+.admin-bar.show{display:block;}
+.admin-row{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:12px 20px;max-width:1160px;margin:0 auto;
+}
+.admin-row + .admin-row{border-top:1px solid #ffffff1a;}
+.admin-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#ffffff14;border:1px solid #ffffff26;color:#fff;
+  padding:9px 16px;border-radius:100px;font-size:0.86rem;font-weight:600;
+  cursor:pointer;transition:background .15s;
+}
+.admin-btn:hover{background:#ffffff26;}
+.admin-btn.primary{background:var(--coral);border-color:var(--coral);}
+.admin-btn.primary:hover{background:var(--coral-dark);}
+.admin-btn.on{background:var(--teal);border-color:var(--teal);}
+.admin-hint{font-size:0.82rem;color:#ffffffa0;margin-left:auto;}
+.admin-field{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#ffffffb0;}
+.admin-field input{
+  background:#ffffff10;border:1px solid #ffffff2a;color:#fff;
+  padding:8px 12px;border-radius:8px;font-size:0.84rem;width:170px;font-family:'Inter',sans-serif;
+}
+.admin-field input::placeholder{color:#ffffff55;}
+.admin-toast{
+  position:fixed;bottom:100px;left:50%;transform:translateX(-50%);
+  background:var(--teal);color:#fff;padding:12px 22px;border-radius:100px;
+  font-size:0.9rem;font-weight:600;box-shadow:0 12px 26px -10px #00000066;
+  z-index:1000;opacity:0;pointer-events:none;transition:opacity .25s, transform .25s;
+}
+.admin-toast.show{opacity:1;transform:translateX(-50%) translateY(-6px);}
+@media(max-width:720px){
+  .admin-row{padding:10px 14px;}
+  .admin-hint{display:none;}
+  .admin-field input{width:120px;}
+}
+</style>
+</head>
+<body class="">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h4l2-7 4 14 2-7h4"></path></svg>
+      </span>
+      <span class="ed" data-ed-id="ed0">КЛИНИКА ПК 72<small>Скорая компьютерная помощь в Тюмени</small></span>
+    </div>
+    <div class="nav-links">
+      <a href="#symptoms">Что лечим</a>
+      <a href="#process">Как проходит приём</a>
+      <a href="#prices">Прайс-лист</a>
+      <a href="#reviews">Истории</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+79698014697" class="nav-phone js-phone-link js-phone-text">+7-969-801-46-97</a>
+      <a href="#order" class="btn btn-primary btn-sm">Записаться</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow ed" data-ed-id="ed1"><span class="dot"></span>Приём заявок круглосуточно · Тюмень</div>
+      <h1 class="ed" data-ed-id="ed2">Ваш компьютер приболел?<br>Мы приедем и <em>вылечим за час</em>.</h1>
+      <p class="lead ed" data-ed-id="ed3">Бесплатная диагностика, срочный выезд мастера</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn btn-primary">Записаться на приём</a>
+        <a href="tel:+79698014697" class="btn btn-ghost js-phone-link">Позвонить мастеру</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-pill ed" data-ed-id="ed4">⭐ <span class="n">4.9</span> рейтинг</div>
+        <div class="trust-pill ed" data-ed-id="ed5">💙 <span class="n">3 200+</span> пациентов</div>
+        <div class="trust-pill ed" data-ed-id="ed6">⏱ <span class="n">60 мин</span> средний выезд</div>
+        <div class="trust-pill ed" data-ed-id="ed7">🛡 <span class="n">3 месяца</span> гарантии</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="chat-card">
+        <div class="chat-head">
+          <div class="chat-avatar">🩺</div>
+          <div>
+            <div class="name">Клиника ПК</div>
+            <div class="status"><span class="dot"></span>на связи, отвечаем быстро</div>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="bubble in" style="animation-delay:.1s">Ноутбук не включается, помогите 😢</div>
+          <div class="bubble out" style="animation-delay:.45s">Не переживайте, уже приняли заявку!<span class="tick">прочитано ✓✓</span></div>
+          <div class="bubble out" style="animation-delay:.8s">Мастер выезжает, будет у вас через 45 минут 🚗</div>
+          <div class="bubble in" style="animation-delay:1.15s">Ого, вы прямо скорая помощь 😍</div>
+          <div class="bubble out" style="animation-delay:1.5s">Именно поэтому мы Клиника ПК 💙<span class="tick">прочитано ✓✓</span></div>
+        </div>
+        <div class="chat-input">
+          <div class="field">Написать сообщение...</div>
+          <div class="send"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"></path></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="symptoms">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="ed" data-ed-id="ed8">Основные неполадки</h2>
+      <p class="ed" data-ed-id="ed9">Опишите неполадку своими словами — «тормозит», «пищит», «пахнет горелым» — мы точно определим суть проблемы</p>
+    </div>
+    <div class="symptom-grid">
+
+      <div class="symptom-card">
+        <div class="symptom-icon teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M2 19h20l-2-3H4l-2 3z"></path></svg></div>
+        <h3 class="ed" data-ed-id="ed10">Ноутбуки</h3>
+        <ul class="symptom-list ed" data-ed-id="ed11">
+          <li>Не включается / выключается сам</li>
+          <li>Греется и шумит вентилятор</li>
+          <li>Разбит экран или петли</li>
+          <li>Не держит зарядку</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="12" rx="1"></rect><path d="M8 20h8M12 15v5"></path></svg></div>
+        <h3 class="ed" data-ed-id="ed12">Настольные ПК</h3>
+        <ul class="symptom-list ed" data-ed-id="ed13">
+          <li>Синий экран / произвольные перезагрузки</li>
+          <li>Гул кулеров, перегрев</li>
+          <li>Не видит диски или память</li>
+          <li>Апгрейд под игры и работу</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path><rect x="7" y="7" width="10" height="10" rx="1.5"></rect></svg></div>
+        <h3 class="ed" data-ed-id="ed14">Комплектующие</h3>
+        <ul class="symptom-list ed" data-ed-id="ed15">
+          <li>Замена материнской платы</li>
+          <li>Установка SSD и памяти</li>
+          <li>Ремонт блока питания</li>
+          <li>Подбор совместимых деталей</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon coral"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4z"></path></svg></div>
+        <h3 class="ed" data-ed-id="ed16">Вирусы и защита</h3>
+        <ul class="symptom-list ed" data-ed-id="ed17">
+          <li>Реклама, редиректы, майнеры</li>
+          <li>Шифровальщики и вымогатели</li>
+          <li>Настройка антивируса</li>
+          <li>Родительский контроль</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon yellow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>
+        <h3 class="ed" data-ed-id="ed18">Настройка и Windows</h3>
+        <ul class="symptom-list ed" data-ed-id="ed19">
+          <li>Установка / переустановка ОС</li>
+          <li>Драйверы и обновления</li>
+          <li>Настройка сети и Wi-Fi</li>
+          <li>Перенос программ и почты</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <div class="symptom-icon teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 5l4-3 4 3M5 12H2M5 8l-3 4 3 4M19 12h3M19 8l3 4-3 4"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+        <h3 class="ed" data-ed-id="ed20">Спасение данных</h3>
+        <ul class="symptom-list ed" data-ed-id="ed21">
+          <li>Диск не читается / щёлкает</li>
+          <li>Случайное удаление файлов</li>
+          <li>Залитая жидкостью техника</li>
+          <li>Перенос на новый носитель</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="ed" data-ed-id="ed22">Как проходит приём</h2>
+      <p class="ed" data-ed-id="ed23">Четыре шага от заявки до «работает как новый» — без лишних визитов и звонков «уточнить статус».</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 class="ed" data-ed-id="ed24">Заявка</h3>
+        <p class="ed" data-ed-id="ed25">Опишите симптомы в форме или по телефону — мастер уточнит детали и назовёт вилку цены сразу.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 class="ed" data-ed-id="ed26">Диагностика</h3>
+        <p class="ed" data-ed-id="ed27">Приезжаем в течение часа или принимаем устройство в мастерской. Диагностика всегда бесплатна.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 class="ed" data-ed-id="ed28">Ремонт</h3>
+        <p class="ed" data-ed-id="ed29">Показываем причину поломки и точную стоимость до начала работ — сюрпризов в чеке не будет.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 class="ed" data-ed-id="ed30">Гарантия</h3>
+        <p class="ed" data-ed-id="ed31">Выдаём гарантийный талон на 12 месяцев и остаёмся на связи, если симптомы вернутся.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="prices">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="ed" data-ed-id="ed32">Прайс-лист&nbsp;</h2>
+      <p class="ed" data-ed-id="ed33">Фиксированные цены на частые случаи. Точную стоимость сложного ремонта озвучим после диагностики.</p>
+    </div>
+    <div class="price-panel">
+      <div class="price-panel-head">
+        <h3 class="ed" data-ed-id="ed34">Базовые тарифы</h3>
+        <span class="price-free ed" data-ed-id="ed35">Диагностика и выезд — 0 ₽</span>
+      </div>
+      <div class="price-cols">
+        <div class="price-col">
+          <div class="price-row"><span class="label ed" data-ed-id="ed36">Чистка от пыли<small>Ноутбук или системный блок</small></span><span class="cost ed" data-ed-id="ed37">от 700 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed38">Замена термопасты<small>Снижение температуры на 15–25°C</small></span><span class="cost ed" data-ed-id="ed39">от 500 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed40">Установка SSD<small>С переносом системы и данных</small></span><span class="cost ed" data-ed-id="ed41">от 1 500 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed42">Замена материнской платы<small>Подбор + установка</small></span><span class="cost ed" data-ed-id="ed43">от 1 500 ₽</span></div>
+        </div>
+        <div class="price-col">
+          <div class="price-row"><span class="label ed" data-ed-id="ed44">Установка Windows<small>С драйверами и активацией</small></span><span class="cost ed" data-ed-id="ed45">от 900 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed46">Лечение от вирусов<small>Полная проверка + защита</small></span><span class="cost ed" data-ed-id="ed47">от 700 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed48">Восстановление данных<small>С повреждённых и «умерших» дисков</small></span><span class="cost ed" data-ed-id="ed49">от 1 900 ₽</span></div>
+          <div class="price-row"><span class="label ed" data-ed-id="ed50">Выезд мастера по Тюмени<small>В пределах города</small></span><span class="cost ed" data-ed-id="ed51">бесплатно</span></div>
+        </div>
+      </div>
+      <div class="price-note ed" data-ed-id="ed52">* Итоговая стоимость всегда согласуется с вами до начала ремонта — фиксированная цена не меняется постфактум.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat"><b class="ed" data-ed-id="ed53">14 лет</b><span class="ed" data-ed-id="ed54">практики в Тюмени</span></div>
+      <div class="stat"><b class="ed" data-ed-id="ed55">4 200+</b><span class="ed" data-ed-id="ed56">устройств на ходу</span></div>
+      <div class="stat"><b class="ed" data-ed-id="ed57">94%</b><span class="ed" data-ed-id="ed58">чинится с первого визита</span></div>
+      <div class="stat"><b class="ed" data-ed-id="ed59">1 мес</b><span class="ed" data-ed-id="ed60">гарантии на все работы</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="ed" data-ed-id="ed61">Истории выздоровления</h2>
+      <p class="ed" data-ed-id="ed62">Реальные случаи из практики — с жалобой, диагнозом и результатом, как в настоящей карте пациента.</p>
+    </div>
+    <div class="case-grid">
+
+      <div class="case-card" style="--accent-bar:var(--teal)">
+        <div class="case-top">
+          <div class="case-avatar" style="background:var(--teal)">А</div>
+          <div><div class="case-name ed" data-ed-id="ed63">Антон</div><div class="case-device ed" data-ed-id="ed64">Ноутбук · ASUS</div></div>
+        </div>
+        <div class="case-row"><span class="k">Жалоба</span><span class="v ed" data-ed-id="ed65">Не включался за день до защиты диплома</span></div>
+        <div class="case-row"><span class="k">Лечение</span><span class="v ed" data-ed-id="ed66">Замена контроллера питания на месте</span></div>
+        <div class="case-row result"><span class="k">Результат</span><span class="v ed" data-ed-id="ed67">Мастер приехал через час и всё починил</span></div>
+      </div>
+
+      <div class="case-card" style="--accent-bar:var(--coral)">
+        <div class="case-top">
+          <div class="case-avatar" style="background:var(--coral)">М</div>
+          <div><div class="case-name ed" data-ed-id="ed68">Марина</div><div class="case-device ed" data-ed-id="ed69">MacBook Air</div></div>
+        </div>
+        <div class="case-row"><span class="k">Жалоба</span><span class="v ed" data-ed-id="ed70">Пролила чай, клавиатура перестала отвечать</span></div>
+        <div class="case-row"><span class="k">Лечение</span><span class="v ed" data-ed-id="ed71">Разборка, промывка платы, замена шлейфа</span></div>
+        <div class="case-row result"><span class="k">Результат</span><span class="v ed" data-ed-id="ed72">Работает как новый, все данные целы</span></div>
+      </div>
+
+      <div class="case-card" style="--accent-bar:var(--blue)">
+        <div class="case-top">
+          <div class="case-avatar" style="background:var(--blue)">О</div>
+          <div><div class="case-name ed" data-ed-id="ed73">Олег</div><div class="case-device ed" data-ed-id="ed74">Системный блок</div></div>
+        </div>
+        <div class="case-row"><span class="k">Жалоба</span><span class="v ed" data-ed-id="ed75">Громкий шум и перегрев при играх</span></div>
+        <div class="case-row"><span class="k">Лечение</span><span class="v ed" data-ed-id="ed76">Чистка от пыли и замена термопасты</span></div>
+        <div class="case-row result"><span class="k">Результат</span><span class="v ed" data-ed-id="ed77">Стало тихо, температура упала на 20°C</span></div>
+      </div>
+
+      <div class="case-card" style="--accent-bar:var(--purple)">
+        <div class="case-top">
+          <div class="case-avatar" style="background:var(--purple)">Е</div>
+          <div><div class="case-name ed" data-ed-id="ed78">Екатерина</div><div class="case-device ed" data-ed-id="ed79">Ноутбук · старый HDD</div></div>
+        </div>
+        <div class="case-row"><span class="k">Жалоба</span><span class="v ed" data-ed-id="ed80">Загрузка Windows занимала 10+ минут</span></div>
+        <div class="case-row"><span class="k">Лечение</span><span class="v ed" data-ed-id="ed81">Установка SSD с переносом системы</span></div>
+        <div class="case-row result"><span class="k">Результат</span><span class="v ed" data-ed-id="ed82">Загружается за 8 секунд, «летает»</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="order">
+  <div class="container">
+    <div class="order-wrap">
+      <div class="order-left">
+        <div class="eyebrow ed" data-ed-id="ed83"><span class="dot"></span>Ответим за 10 минут</div>
+        <h2 class="ed" data-ed-id="ed84">Запишитесь на приём</h2>
+        <p class="ed" data-ed-id="ed85">Оставьте контакты — перезвоним, уточним симптомы и назовём время визита мастера.</p>
+        <ul class="order-perks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg><span class="ed" data-ed-id="ed86">Диагностика — бесплатно</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg><span class="ed" data-ed-id="ed87">Выезд по Тюмени в течение часа</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg><span class="ed" data-ed-id="ed88">Гарантия 3 месяца на все работы</span></li>
+        </ul>
+      </div>
+      <div class="form-box">
+        <form id="tgForm2">
+          <input type="text" id="name2" placeholder="Ваше имя" required="">
+          <input type="tel" id="phone2" placeholder="Телефон" required="">
+          <textarea id="msg2" rows="3" placeholder="Что случилось с устройством?"></textarea>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+        <div id="status2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="ed" data-ed-id="ed89">© 2026 Клиника ПК — ремонт компьютеров в Тюмени</span>
+    <a href="tel:+79698014697" class="js-phone-link js-phone-text">+7-969-801-46-97</a>
+  </div>
+</footer>
+
+<!-- ============ ПАНЕЛЬ РЕДАКТИРОВАНИЯ (видна только по ссылке ?admin=1) ============ -->
+
+
+
+<script>
+/* ===================================================================
+   БЛОК ЗАЯВКИ — отправка в Telegram
+=================================================================== */
+const DEFAULT_BOT_TOKEN = '8889521150:AAF9v6DV_-3mcfKl8rDna1wXEdI87s5maAw';
+const DEFAULT_CHAT_ID = '957162911';
+const DEFAULT_PHONE = '+7 (922) 000-00-00';
+
+let RUNTIME = {
+  botToken: DEFAULT_BOT_TOKEN,
+  chatId: DEFAULT_CHAT_ID,
+  phone: DEFAULT_PHONE
+};
+
+document.getElementById('tgForm2').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const s = document.getElementById('status2');
+  s.textContent = '⏳ Отправляем...';
+  try{
+    const r = await fetch(`https://api.telegram.org/bot${RUNTIME.botToken}/sendMessage`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        chat_id: RUNTIME.chatId,
+        text: `🩺 Новая заявка — Клиника ПК\n👤 ${document.getElementById('name2').value}\n📱 ${document.getElementById('phone2').value}\n📝 ${document.getElementById('msg2').value || '—'}`,
+        parse_mode:'HTML'
+      })
+    });
+    const j = await r.json();
+    s.textContent = j.ok ? '✅ Заявка принята, скоро перезвоним' : '❌ Ошибка отправки, позвоните нам напрямую';
+    if(j.ok) document.getElementById('tgForm2').reset();
+  }catch(err){
+    s.textContent = '❌ Ошибка отправки, позвоните нам напрямую';
+  }
+});
+
+/* ===================================================================
+   АДМИН-ПАНЕЛЬ — редактирование без кода
+   Открывается по ссылке: ваш-сайт.ru/index.html?admin=1
+=================================================================== */
+(function(){
+  const isAdmin = new URLSearchParams(location.search).get('admin') === '1';
+  const bar = document.getElementById('adminBar');
+  if(!isAdmin){ return; } // обычным посетителям панель не показываем
+  bar.classList.add('show');
+
+  const EDITABLES = Array.from(document.querySelectorAll('.ed'));
+  EDITABLES.forEach((el,i)=> el.dataset.edId = 'ed'+i);
+
+  const toast = document.getElementById('adminToast');
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(()=>toast.classList.remove('show'), 1800);
+  }
+
+  /* ---- применение телефона по всей странице ---- */
+  function applyPhone(phone){
+    if(!phone) return;
+    RUNTIME.phone = phone;
+    document.querySelectorAll('.js-phone-text').forEach(el=> el.textContent = phone);
+    document.querySelectorAll('.js-phone-link').forEach(el=> el.setAttribute('href','tel:'+phone.replace(/[^\d+]/g,'')));
+  }
+
+  /* ---- загрузка сохранённого черновика ---- */
+  function loadDraft(){
+    try{
+      const draft = JSON.parse(localStorage.getItem('kpk_draft')||'{}');
+      EDITABLES.forEach(el=>{ if(draft[el.dataset.edId] != null) el.innerHTML = draft[el.dataset.edId]; });
+    }catch(e){}
+    try{
+      const settings = JSON.parse(localStorage.getItem('kpk_settings')||'{}');
+      if(settings.phone) applyPhone(settings.phone);
+      if(settings.botToken) RUNTIME.botToken = settings.botToken;
+      if(settings.chatId) RUNTIME.chatId = settings.chatId;
+      document.getElementById('setPhone').value = settings.phone || RUNTIME.phone;
+      document.getElementById('setToken').value = settings.botToken || '';
+      document.getElementById('setChatId').value = settings.chatId || '';
+    }catch(e){}
+  }
+
+  function saveDraft(){
+    const data = {};
+    EDITABLES.forEach(el=> data[el.dataset.edId] = el.innerHTML);
+    localStorage.setItem('kpk_draft', JSON.stringify(data));
+  }
+
+  let saveTimer;
+  document.addEventListener('input', function(e){
+    if(!e.target.closest('.ed')) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 400);
+  });
+
+  /* ---- переключатель режима редактирования ---- */
+  let editing = true;
+  function setEditing(on){
+    editing = on;
+    document.body.classList.toggle('editing', on);
+    EDITABLES.forEach(el=> el.setAttribute('contenteditable', on ? 'true' : 'false'));
+    document.getElementById('btnToggleEdit').textContent = on ? '✏️ Выключить редактирование' : '👁 Включить редактирование';
+    document.getElementById('btnToggleEdit').classList.toggle('on', on);
+  }
+  document.getElementById('btnToggleEdit').addEventListener('click', ()=> setEditing(!editing));
+
+  /* ---- настройки: телефон / токен / chat id ---- */
+  document.getElementById('btnApplySettings').addEventListener('click', function(){
+    const phone = document.getElementById('setPhone').value.trim();
+    const botToken = document.getElementById('setToken').value.trim();
+    const chatId = document.getElementById('setChatId').value.trim();
+    if(phone) applyPhone(phone);
+    if(botToken) RUNTIME.botToken = botToken;
+    if(chatId) RUNTIME.chatId = chatId;
+    localStorage.setItem('kpk_settings', JSON.stringify({phone, botToken, chatId}));
+    showToast('Настройки применены ✓');
+  });
+
+  /* ---- сброс черновика ---- */
+  document.getElementById('btnReset').addEventListener('click', function(){
+    if(!confirm('Сбросить все правки и вернуть исходный текст?')) return;
+    localStorage.removeItem('kpk_draft');
+    localStorage.removeItem('kpk_settings');
+    location.reload();
+  });
+
+  /* ---- скачивание готового HTML-файла со всеми правками ---- */
+  document.getElementById('btnDownload').addEventListener('click', function(){
+    const clone = document.documentElement.cloneNode(true);
+
+    // убираем панель админки и тост из экспортируемой копии
+    clone.querySelector('#adminBar')?.remove();
+    clone.querySelector('#adminToast')?.remove();
+    clone.querySelector('body').classList.remove('editing');
+
+    // снимаем режим редактирования со всех полей
+    clone.querySelectorAll('.ed').forEach(el=> el.removeAttribute('contenteditable'));
+
+    // прописываем актуальные телефон/токен/chat id вместо плейсхолдеров
+    const scriptTag = clone.querySelector('script:last-of-type');
+    if(scriptTag){
+      let code = scriptTag.textContent;
+      code = code.replace(`'${DEFAULT_BOT_TOKEN}'`, `'${(RUNTIME.botToken||DEFAULT_BOT_TOKEN).replace(/'/g,"\\'")}'`);
+      code = code.replace(`'${DEFAULT_CHAT_ID}'`, `'${(RUNTIME.chatId||DEFAULT_CHAT_ID).replace(/'/g,"\\'")}'`);
+      scriptTag.textContent = code;
+    }
+
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'klinika-pk.html';
+    link.click();
+    showToast('Файл скачан — загрузите его на хостинг вместо старого ✓');
+  });
+
+  loadDraft();
+  setEditing(true);
+})();
+</script>
+
+
+</body></html>
