@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://klinikapk72.github.io/klinika-pk/sitemap.xml
